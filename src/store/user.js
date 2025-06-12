@@ -2,12 +2,10 @@ import { defineStore } from "pinia";
 
 export const useUser = defineStore("user", {
   state: () => ({
-    name: "Василий",
-    age: 30,
+    name: "",
+    age: null,
     childrenLimit: 5,
     children: [
-      { name: "Пётр", age: 10 },
-      { name: "Василий", age: 14 },
     ],
   }),
 
