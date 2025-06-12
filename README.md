@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# user-children-form
-=======
->>>>>>> eb842a65e21b1694d8aada3027ab80f780c227cd
 # Vue 3 + Vite
 
 This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
