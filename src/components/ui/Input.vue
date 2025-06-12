@@ -6,7 +6,7 @@ defineProps({
   },
   variant: {
     type: String,
-    default: 'solo-filled',
+    default: 'outlined',
   },
 });
 
@@ -24,3 +24,10 @@ const modelValue = defineModel();
     clearable
   />
 </template>
+
+<style scoped>
+.input {
+  width: 100%;
+  border: 2px solid #1111117A !important;
+}
+</style>
