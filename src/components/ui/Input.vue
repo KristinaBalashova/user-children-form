@@ -26,8 +26,5 @@ const modelValue = defineModel();
 </template>
 
 <style scoped>
-.input {
-  width: 100%;
-  border: 2px solid #1111117A !important;
-}
+
 </style>
