@@ -46,6 +46,7 @@ const modelValue = defineModel();
 
 .input {
   width: 100%;
+  height: 56px;
   padding: 14px 12px 6px 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -70,7 +71,7 @@ label {
 }
 
 label.floated {
-  top: 4px;
+  top: 8px;
   left: 10px;
   font-size: 13px;
   font-weight: 400;
