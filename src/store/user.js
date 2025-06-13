@@ -16,8 +16,8 @@ export const useUser = defineStore("user", {
   },
 
   actions: {
+
     setUserData({ name, age, children }) {
-      console.log("Form submitted with data:", { name, age, children });
       this.name = name;
       this.age = age;
       this.children = [...children];
