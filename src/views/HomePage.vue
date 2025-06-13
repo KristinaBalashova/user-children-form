@@ -11,9 +11,9 @@ function submitForm(data) {
 </script>
 
 <template>
-  <div class="form-container">
+  <section class="form-container">
     <UserForm @submitForm="submitForm"/>
-  </div>
+  </section>
 </template>
 
 <style scoped>
