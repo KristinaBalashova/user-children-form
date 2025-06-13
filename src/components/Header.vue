@@ -10,8 +10,8 @@ import logo from '../assets/logo.svg'
     </div>
     <nav class="nav">
       <ul class="nav-list">
-        <li><a href="/">Форма</a></li>
-        <li><a href="/preview">Превью</a></li>
+        <li><router-link to="/">Форма</router-link></li>
+        <li><router-link to="/preview">Превью</router-link></li>
       </ul>   
     </nav>
   </header>
