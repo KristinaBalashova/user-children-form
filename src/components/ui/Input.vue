@@ -29,7 +29,6 @@ const modelValue = defineModel();
     <input
       v-bind="$attrs"
       v-model="modelValue"
-      required
       class="input"
       @focus="isFocused = true"
       @blur="onBlur"
