@@ -56,4 +56,28 @@ const props = defineProps({
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-outlined:disabled {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background-color: transparent;
+}
+
+.btn-filled:disabled {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-text:disabled {
+  color: var(--color-primary);
+  background-color: transparent;
+}
+
+
 </style>
