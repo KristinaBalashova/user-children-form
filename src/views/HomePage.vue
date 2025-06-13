@@ -1,18 +1,18 @@
 <script setup>
-import Form from "../components/Form.vue";
+import UserForm from "../components/UserForm/UserForm.vue";
 import { useUser } from "../store/user";
 
-const store = useUser();
+const userStore = useUser();
 
-function addChild(child) {
-  store.addChild(child);
+function submitForm(data) {
+  userStore.setUserData(data);
 }
 
 </script>
 
 <template>
   <div class="form-container">
-    <Form @submit="addChild" />
+    <UserForm @submitForm="submitForm"/>
   </div>
 </template>
 

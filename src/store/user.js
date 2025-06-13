@@ -16,17 +16,11 @@ export const useUser = defineStore("user", {
   },
 
   actions: {
-    setUserName(name) {
+    setUserData({ name, age, children }) {
+      console.log("Form submitted with data:", { name, age, children });
       this.name = name;
-    },
-    setUserAge(age) {
       this.age = age;
-    },
-    addChild(child) {
-      if (this.children.length >= this.childrenLimit) {
-        throw new Error(`Можно добавить максимум: ${this.childrenLimit} детей`);
-      }
-      this.children.push(child);
+      this.children = [...children];
     },
   },
 });
