@@ -1,12 +1,10 @@
 <script setup>
 import { useUser } from "../store/user";
-import { computed } from "vue";
-
+import { storeToRefs } from "pinia";
 const userStore = useUser();
 
-const { name, age } = userStore;
+const { name, age, children } = storeToRefs(userStore);
 
-const children = computed(() => userStore.children);
 </script>
 
 <template>
