@@ -1,12 +1,8 @@
 <script setup>
-defineProps({
-  color: {
-    type: String,
-    default: '#01A7FD',
-  },
+const props = defineProps({
   variant: {
     type: String,
-    default: 'outlined', // options: 'outlined', 'tonal', 'text'
+    default: 'outlined', // 'outlined' | 'filled' | 'text'
   },
   disabled: {
     type: Boolean,
@@ -16,41 +12,48 @@ defineProps({
 </script>
 
 <template>
-  <v-btn
+  <button
     v-bind="$attrs"
     class="btn"
-    :class="[`btn--${variant}`]"
+    :class="`btn-${variant}`"
     :disabled="disabled"
   >
     <slot />
-  </v-btn>
+  </button>
 </template>
 
 <style scoped>
 .btn {
-  border-radius: 100px !important;
+  border-radius: 100px;
+  height: 44px;
   font-weight: 500;
   padding: 8px 20px;
   font-size: 16px;
   box-shadow: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.btn--outlined {
+.btn-outlined {
   background-color: transparent;
-  color: #01A7FD;
-  border: 2px solid #01A7FD;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
 
-.btn--tonal {
-  background-color: #01A7FD;
+.btn-filled {
+  background-color: var(--color-primary);
   color: white;
   border: none;
 }
 
-.btn--text {
+.btn-text {
   background-color: transparent;
-  color: #01A7FD;
+  color: var(--color-primary);
   border: none;
 }
 
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 </style>
