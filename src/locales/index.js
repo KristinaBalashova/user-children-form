@@ -1,4 +1,3 @@
-import PreviewPage from "../views/PreviewPage.vue";
 
 export const messages = {
   ru: {
@@ -8,6 +7,7 @@ export const messages = {
       delete: "Удалить",
       allRightsReserved: "Все права защищены",
       save: 'Сохранить',
+      success: 'Данные успешно отправлены!',
     },
     form: {
       name: "Имя",
