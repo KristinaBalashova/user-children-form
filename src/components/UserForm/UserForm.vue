@@ -3,7 +3,9 @@ import Input from "./../ui/Input.vue";
 import Button from "./../ui/Button.vue";
 import { ref } from "vue";
 import { useUser } from "../../store/user";
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const userStore = useUser();
 
 const userForm = ref({
@@ -41,21 +43,21 @@ const emit = defineEmits(["submitForm"]);
 <template>
   <form class="child-form" @submit.prevent="submitForm">
     <div class="parent-container">
-      <h2>Персональные данные</h2>
-      <Input v-model="userForm.name" type="text" label="Имя" />
-      <Input v-model="userForm.age" type="number" label="Возраст" :min="0" />
+      <h2>{{ t('form.personalData') }}</h2>
+      <Input v-model="userForm.name" type="text" :label="t('form.name')" />
+      <Input v-model="userForm.age" type="number" :label="t('form.age')" :min="0" />
     </div>
 
     <div>
       <div class="children-container">
         <div class="children-container-header">
-          <h2>Дети (макс. 5)</h2>
+          <h2>{{ t('form.kids') }} (макс. 5)</h2>
           <Button
             variant="outlined"
             @click.stop="addChild"
             :disabled="userForm.children.length >= userStore.childrenLimit"
           >
-            + Добавить ребёнка
+            {{ t('form.addChild') }}
           </Button>
         </div>
         <div class="children-list">
@@ -64,21 +66,20 @@ const emit = defineEmits(["submitForm"]);
             :key="index"
             class="child-entry"
           >
-            <Input v-model="child.name" type="text" label="Имя" />
-            <Input v-model="child.age" type="number" label="Возраст" :min="0" />
+            <Input v-model="child.name" type="text" :label="t('form.name')" />
+            <Input v-model="child.age" type="number" :label="t('form.age')" :min="0" />
             <Button
               @click.stop="removeChild(index)"
               variant="text"
               class="delete-button"
-              >Удалить</Button
-            >
+              >{{ t('common.delete') }}</Button>
           </div>
         </div>
       </div>
     </div>
 
     <Button variant="filled" type="submit">
-      Сохранить
+      {{ t('form.submit') }}
     </Button>
   </form>
 </template>

@@ -9,7 +9,7 @@ import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
 const options = {
-  position: POSITION.TOP_RIGHT,
+  position: 'top-right',
   timeout: 5000,
   closeOnClick: true,
   pauseOnFocusLoss: true,
@@ -28,4 +28,4 @@ const i18n = createI18n({
 
 const pinia = createPinia();
 
-createApp(App).use(router).use(pinia).use(Toast, options).mount("#app");
+createApp(App).use(router).use(pinia).use(Toast, options).use(i18n).mount("#app");

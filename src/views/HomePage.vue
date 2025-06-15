@@ -2,13 +2,15 @@
 import UserForm from "../components/UserForm/UserForm.vue";
 import { useUser } from "../store/user";
 import { useToast } from 'vue-toastification'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const toast = useToast()
 const userStore = useUser();
 
 function submitForm(data) {
   userStore.setUserData(data);
-  toast.success('Данные успешно отправлены!')
+  toast.success(t('common.success'));
 }
 
 </script>

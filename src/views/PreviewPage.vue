@@ -1,6 +1,9 @@
 <script setup>
 import { useUser } from "../store/user";
 import { storeToRefs } from "pinia";
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 const userStore = useUser();
 
 const { name, age, children } = storeToRefs(userStore);
@@ -10,13 +13,13 @@ const { name, age, children } = storeToRefs(userStore);
 <template>
   <div class="preview">
     <section class="parent-info">
-      <h2>Персональные данные</h2>
+      <h2>{{t('form.personalData')}}</h2>
 
-      <p class="user-info-text" v-if="name && age">{{ name }}, {{ age }} лет</p>
-      <p v-else>Нет персональных данных</p>
+      <p class="user-info-text" v-if="name && age">{{ name }}, {{ age }} {{ t('form.age_suffix') }}</p>
+      <p v-else>{{ t('form.noData') }}</p>
     </section>
     <section class="children-info">
-      <h2>Дети</h2>
+      <h2>{{ t('form.kids') }}</h2>
 
       <ul v-if="children.length > 0" class="children">
         <li
@@ -24,11 +27,11 @@ const { name, age, children } = storeToRefs(userStore);
           :key="index"
           class="user-info-text"
         >
-          {{ child.name }}, {{ child.age }} лет
+          {{ child.name }}, {{ child.age }} {{ t('form.age_suffix') }}
         </li>
       </ul>
 
-      <p v-else>Нет детей</p>
+      <p v-else> {{ t('form.noKids') }}</p>
     </section>
   </div>
 </template>

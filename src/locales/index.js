@@ -13,9 +13,12 @@ export const messages = {
       name: "Имя",
       age: "Возраст",
       submit: "Отправить",
-      addChild: "Добавить ребенка",
+      addChild: "+ Добавить ребенка",
       personalData: "Персональные данные",
       kids: "Дети",
+      age_suffix: "лет",
+      noData: "Нет данных",
+      noKids: "Нет детей",
     },
     errors: {
       required: "Обязательное поле",

@@ -1,6 +1,8 @@
 <script setup>
 import logo from '../assets/logo.svg'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 </script>
 
 <template>
@@ -10,9 +12,9 @@ import logo from '../assets/logo.svg'
     </div>
     <nav class="nav">
       <ul class="nav-list">
-        <li><router-link to="/">Форма</router-link></li>
-        <li><router-link to="/preview">Превью</router-link></li>
-      </ul>   
+        <li><router-link to="/">{{ t('common.form') }}</router-link></li>
+        <li><router-link to="/preview">{{ t('common.preview') }}</router-link></li>
+      </ul>
     </nav>
   </header>
 </template>

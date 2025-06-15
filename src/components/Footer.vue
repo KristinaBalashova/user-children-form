@@ -1,9 +1,13 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 </script>
 
 <template>
   <footer class="footer">
-    <p class="text">all rights reserved</p>
+    <p class="text">{{ t('common.allRightsReserved') }}</p>
   </footer>
 </template>
 
