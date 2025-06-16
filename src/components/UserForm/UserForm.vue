@@ -11,7 +11,7 @@ const userStore = useUser();
 const userForm = ref({
   name: "",
   age: "",
-  children: [{ name: "", age: null }],
+  children: [], //{ name: "", age: null }
 });
 
 function addChild() {
@@ -33,7 +33,7 @@ function submitForm() {
   userForm.value = {
     name: "",
     age: "",
-    children: [{ name: "", age: null }],
+    children: [], //{ name: string, age: num }
   };
 }
 
@@ -44,8 +44,8 @@ const emit = defineEmits(["submitForm"]);
   <form class="child-form" @submit.prevent="submitForm">
     <div class="parent-container">
       <h2>{{ t('form.personalData') }}</h2>
-      <Input v-model="userForm.name" type="text" :label="t('form.name')" />
-      <Input v-model="userForm.age" type="number" :label="t('form.age')" :min="0" />
+      <Input v-model="userForm.name" required type="text" :label="t('form.name')" />
+      <Input v-model="userForm.age" required type="number" :label="t('form.age')" :min="0" />
     </div>
 
     <div>
@@ -54,8 +54,9 @@ const emit = defineEmits(["submitForm"]);
           <h2>{{ t('form.kids') }} (макс. 5)</h2>
           <Button
             variant="outlined"
+            type="button"
             @click.stop="addChild"
-            :disabled="userForm.children.length >= userStore.childrenLimit"
+            v-if="userForm.children.length < userStore.childrenLimit"
           >
             {{ t('form.addChild') }}
           </Button>
@@ -66,8 +67,8 @@ const emit = defineEmits(["submitForm"]);
             :key="index"
             class="child-entry"
           >
-            <Input v-model="child.name" type="text" :label="t('form.name')" />
-            <Input v-model="child.age" type="number" :label="t('form.age')" :min="0" />
+            <Input v-model="child.name" type="text" required :label="t('form.name')" />
+            <Input v-model="child.age" type="number" required :label="t('form.age')" :min="0" />
             <Button
               @click.stop="removeChild(index)"
               variant="text"
