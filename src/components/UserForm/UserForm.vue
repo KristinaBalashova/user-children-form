@@ -25,10 +25,19 @@ function removeChild(index) {
 }
 
 function submitForm() {
-
   const form = userForm.value;
 
   const preparedDeepCopy = JSON.parse(JSON.stringify(form));
+
+  preparedDeepCopy.name = preparedDeepCopy.name.trim();
+
+  preparedDeepCopy.age = Number(preparedDeepCopy.age);
+  
+  preparedDeepCopy.children = preparedDeepCopy.children.map(child => ({
+    name: child.name.trim(),
+    age: Number(child.age),
+  }));
+
   emit("submitForm", preparedDeepCopy);
 
   userForm.value = {
@@ -37,6 +46,7 @@ function submitForm() {
     children: [],
   };
 }
+
 
 const emit = defineEmits(["submitForm"]);
 </script>
