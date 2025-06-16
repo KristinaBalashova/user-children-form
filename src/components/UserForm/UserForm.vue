@@ -26,14 +26,15 @@ function removeChild(index) {
 
 function submitForm() {
 
-  const preparedDeepCopy = JSON.parse(JSON.stringify(userForm.value));
-  
+  const form = userForm.value;
+
+  const preparedDeepCopy = JSON.parse(JSON.stringify(form));
   emit("submitForm", preparedDeepCopy);
 
   userForm.value = {
     name: "",
     age: "",
-    children: [], //{ name: string, age: num }
+    children: [],
   };
 }
 
@@ -65,7 +66,7 @@ const emit = defineEmits(["submitForm"]);
           <div
             v-for="(child, index) in userForm.children"
             :key="index"
-            class="child-entry"
+            class="child-inputs"
           >
             <Input v-model="child.name" type="text" required :label="t('form.name')" />
             <Input v-model="child.age" type="number" required :label="t('form.age')" :min="0" />
@@ -119,7 +120,7 @@ const emit = defineEmits(["submitForm"]);
   padding: 0;
 }
 
-.child-entry {
+.child-inputs {
   display: flex;
   flex-direction: row;
   gap: 18px;
