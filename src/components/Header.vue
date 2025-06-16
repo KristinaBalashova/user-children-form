@@ -53,4 +53,8 @@ const { t } = useI18n()
   font-weight: 500;
 }
 
+.nav-list li a:hover {
+  color: var(--color-primary);
+}
+
 </style>
