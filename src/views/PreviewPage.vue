@@ -73,7 +73,6 @@ h2 {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
   gap: 20px;
 }
 

@@ -5,6 +5,7 @@ import ChildInput from "./ChildInput.vue";
 import { ref } from "vue";
 import { useUser } from "../../store/user";
 import { useI18n } from "vue-i18n";
+import { prepareFormData } from "./utils";
 
 const { t } = useI18n();
 const userStore = useUser();
@@ -25,21 +26,15 @@ function removeChild(index) {
   userForm.value.children.splice(index, 1);
 }
 
+
 function submitForm() {
   const form = userForm.value;
 
   const preparedDeepCopy = JSON.parse(JSON.stringify(form));
 
-  preparedDeepCopy.name = preparedDeepCopy.name.trim();
+  const finalData = prepareFormData(preparedDeepCopy)
 
-  preparedDeepCopy.age = Number(preparedDeepCopy.age);
-
-  preparedDeepCopy.children = preparedDeepCopy.children.map((child) => ({
-    name: child.name.trim(),
-    age: Number(child.age),
-  }));
-
-  emit("submitForm", preparedDeepCopy);
+  emit("submitForm", finalData);
 
   userForm.value = {
     name: "",
