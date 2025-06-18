@@ -1,11 +1,12 @@
 <script setup>
 import Input from "./../ui/Input.vue";
 import Button from "./../ui/Button.vue";
+import ChildInput from "./ChildInput.vue";
 import { ref } from "vue";
 import { useUser } from "../../store/user";
-import { useI18n } from 'vue-i18n'
+import { useI18n } from "vue-i18n";
 
-const { t } = useI18n()
+const { t } = useI18n();
 const userStore = useUser();
 
 const userForm = ref({
@@ -32,8 +33,8 @@ function submitForm() {
   preparedDeepCopy.name = preparedDeepCopy.name.trim();
 
   preparedDeepCopy.age = Number(preparedDeepCopy.age);
-  
-  preparedDeepCopy.children = preparedDeepCopy.children.map(child => ({
+
+  preparedDeepCopy.children = preparedDeepCopy.children.map((child) => ({
     name: child.name.trim(),
     age: Number(child.age),
   }));
@@ -47,29 +48,39 @@ function submitForm() {
   };
 }
 
-
 const emit = defineEmits(["submitForm"]);
 </script>
 
 <template>
   <form class="child-form" @submit.prevent="submitForm">
     <div class="parent-container">
-      <h2>{{ t('form.personalData') }}</h2>
-      <Input v-model="userForm.name" required type="text" :label="t('form.name')" />
-      <Input v-model="userForm.age" required type="number" :label="t('form.age')" :min="0" />
+      <h2>{{ t("form.personalData") }}</h2>
+      <Input
+        v-model="userForm.name"
+        required
+        type="text"
+        :label="t('form.name')"
+      />
+      <Input
+        v-model="userForm.age"
+        required
+        type="number"
+        :label="t('form.age')"
+        :min="0"
+      />
     </div>
 
     <div>
       <div class="children-container">
         <div class="children-container-header">
-          <h2>{{ t('form.kids') }} (макс. 5)</h2>
+          <h2>{{ t("form.kids") }} (макс. 5)</h2>
           <Button
             variant="outlined"
             type="button"
             @click.stop="addChild"
             v-if="userForm.children.length < userStore.childrenLimit"
           >
-            {{ t('form.addChild') }}
+            {{ t("form.addChild") }}
           </Button>
         </div>
         <div class="children-list">
@@ -78,20 +89,18 @@ const emit = defineEmits(["submitForm"]);
             :key="index"
             class="child-inputs"
           >
-            <Input v-model="child.name" type="text" required :label="t('form.name')" />
-            <Input v-model="child.age" type="number" required :label="t('form.age')" :min="0" />
-            <Button
-              @click.stop="removeChild(index)"
-              variant="text"
-              class="delete-button"
-              >{{ t('common.delete') }}</Button>
+            <ChildInput
+              v-model:name="child.name"
+              v-model:age="child.age"
+              @removeChild="removeChild(index)"
+            />
           </div>
         </div>
       </div>
     </div>
 
     <Button variant="filled" type="submit">
-      {{ t('form.submit') }}
+      {{ t("form.submit") }}
     </Button>
   </form>
 </template>
@@ -124,10 +133,6 @@ const emit = defineEmits(["submitForm"]);
   gap: 10px;
   display: flex;
   flex-direction: column;
-}
-
-.delete-button {
-  padding: 0;
 }
 
 .child-inputs {
